@@ -1,0 +1,33 @@
+{
+  "name": "calorie-tracker",
+  "version": "1.0.0",
+  "description": "Backend service for Calorie Tracker",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server",
+    "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/securethebags/calorie-tracker.git"
+  },
+  "author": "Anthony Jimenez and Stacey Carrillo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/securethebags/calorie-tracker/issues"
+  },
+  "homepage": "https://github.com/securethebags/calorie-tracker#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.14",
+    "morgan": "^1.10.0",
+    "react-scripts": "^3.4.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
+}

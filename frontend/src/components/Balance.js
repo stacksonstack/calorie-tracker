@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalContext';
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
 
 export const Balance = () => {
   const { calorieEvents } = useContext(GlobalContext);
@@ -10,7 +10,7 @@ export const Balance = () => {
 
   return (
     <>
-    <h1>Calories: {2000 - total}</h1>
+      <h1>Calories: {2000 - total}</h1>
     </>
-  )
-}
+  );
+};
