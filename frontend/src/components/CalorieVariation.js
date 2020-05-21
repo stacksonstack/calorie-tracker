@@ -4,15 +4,13 @@ import { GlobalContext } from "../context/GlobalContext";
 export const CalorieVariation = () => {
   const { calorieEvents } = useContext(GlobalContext);
 
-  const amounts = calorieEvents.map(({ amount }) => amount);
+  const caloriesConsumed = calorieEvents
+    .filter(({ type }) => type === "food")
+    .reduce((acc, { amount }) => (acc += amount), 0);
 
-  const caloriesConsumed = amounts
-    .filter((calorieEvent) => calorieEvent > 0)
-    .reduce((acc, calorieEvent) => (acc += calorieEvent), 0);
-
-  const caloriesBurned = amounts
-    .filter((calorieEvent) => calorieEvent < 0)
-    .reduce((acc, calorieEvent) => (acc += calorieEvent) * -1, 0);
+  const caloriesBurned = calorieEvents
+    .filter(({ type }) => type === "exercise")
+    .reduce((acc, { amount }) => (acc += amount), 0);
 
   return (
     <div className="inc-exp-container">

@@ -4,9 +4,12 @@ import { GlobalContext } from "../context/GlobalContext";
 export const Balance = () => {
   const { calorieEvents } = useContext(GlobalContext);
 
-  const amounts = calorieEvents.map(({ amount }) => amount);
-
-  const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+  const total = calorieEvents
+    .map(({ type, amount }) =>
+      type === "exercise" ? -Math.abs(amount) : amount
+    )
+    .reduce((acc, amount) => (acc += amount), 0)
+    .toFixed(2);
 
   return (
     <>

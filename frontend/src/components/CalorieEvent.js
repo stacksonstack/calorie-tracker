@@ -5,15 +5,20 @@ export const CalorieEvent = ({ calorieEvent }) => {
   const { deleteCalorieEvent } = useContext(GlobalContext);
 
   const inputVariation =
-    calorieEvent.amount < 0 ? "Burned while " : "Consumed ";
+    calorieEvent.type === "exercise" ? "Burned while " : "Consumed ";
+
+  const amount =
+    calorieEvent.type === "exercise"
+      ? -Math.abs(calorieEvent.amount) // note talk to stacey
+      : calorieEvent.amount;
 
   return (
     <li>
       {inputVariation}
       <span>
-        {calorieEvent.text} Calories:{Math.abs(calorieEvent.amount)}
+        {calorieEvent.text} Calories:{amount}
       </span>
-      <button onClick={() => deleteCalorieEvent(calorieEvent.id)}>x</button>
+      <button onClick={() => deleteCalorieEvent(calorieEvent._id)}>x</button>
     </li>
   );
 };

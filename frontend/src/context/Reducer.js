@@ -3,13 +3,24 @@ export default (state, action) => {
     return {
       ...state,
       calorieEvents: state.calorieEvents.filter(
-        (transaction) => transaction.id !== action.payload
+        (transaction) => transaction._id !== action.payload
       ),
     };
   } else if (action.type === "ADD_CALORIEEVENT") {
     return {
       ...state,
-      calorieEvents: [action.payload, ...state.calorieEvents],
+      calorieEvents: [...state.calorieEvents, action.payload],
+    };
+  } else if (action.type === "GET_CALORIEEVENTS") {
+    return {
+      ...state,
+      loading: false,
+      calorieEvents: action.payload,
+    };
+  } else if (action.type === "ERROR") {
+    return {
+      ...state,
+      error: action.payload,
     };
   }
 };

@@ -1,28 +1,25 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
 export const AddCalorieEvent = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
-  const [type, setType] = useState("");
+  const [type, setType] = useState("food");
   const { addCalorieEvent } = useContext(GlobalContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const newTransaction = {
-      id: Math.floor(Math.random() * 100000000),
       text,
+      type,
       amount: +amount,
     };
 
     addCalorieEvent(newTransaction);
   };
 
-  const handleAmount = (e) =>
-    type === "burn"
-      ? setAmount(-Math.abs(e.target.value))
-      : setAmount(e.target.value);
+  const handleAmount = (e) => setAmount(Math.abs(e.target.value));
 
   return (
     <>
@@ -30,10 +27,10 @@ export const AddCalorieEvent = () => {
 
       <form onSubmit={onSubmit}>
         <select onChange={(e) => setType(e.target.value)}>
-          <option name="Add Food" value="consume">
+          <option name="Add Food" value="food">
             Add Food Item
           </option>
-          <option name="Add Exercise" value="burn">
+          <option name="Add Exercise" value="exercise">
             Add Exercise activity
           </option>
         </select>

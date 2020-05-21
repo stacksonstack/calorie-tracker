@@ -1,6 +1,5 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const morgan = require("morgan");
 const connectDB = require("./config/db");
 
 dotenv.config({ path: "./config/config.env" });
@@ -13,7 +12,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/api/v1/calorieEvents", calorieEvents);
+app.use("/api/v1/calories", calorieEvents);
 
 const PORT = process.env.PORT || 5000;
 
