@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
+import { ItemContext } from "../context/Items/ItemContext";
 
 export const CalorieEvent = ({ calorieEvent }) => {
-  const { deleteCalorieEvent } = useContext(GlobalContext);
+  const { deleteCalorieEvent } = useContext(ItemContext);
 
   const inputVariation =
     calorieEvent.type === "exercise" ? "Burned while " : "Consumed ";

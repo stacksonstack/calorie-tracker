@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
+import { ItemContext } from "../context/Items/ItemContext";
 
 export const CalorieVariation = () => {
-  const { calorieEvents } = useContext(GlobalContext);
+  const { calorieEvents } = useContext(ItemContext);
 
   const caloriesConsumed = calorieEvents
     .filter(({ type }) => type === "food")

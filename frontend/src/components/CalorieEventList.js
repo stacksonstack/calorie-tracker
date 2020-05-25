@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { CalorieEvent } from "./CalorieEvent";
-import { GlobalContext } from "../context/GlobalContext";
+import { ItemContext } from "../context/Items/ItemContext";
 
 export const CalorieEventList = () => {
-  const { calorieEvents, getCalorieEvents } = useContext(GlobalContext);
+  const { calorieEvents, getCalorieEvents } = useContext(ItemContext);
   useEffect(() => {
     getCalorieEvents();
     //eslint-disable-next-line react-hooks/exhaustive-deps

@@ -6,13 +6,13 @@ dotenv.config({ path: "./config/config.env" });
 
 connectDB();
 
-const calorieEvents = require("./routes/calorieEvents");
-
 const app = express();
 
 app.use(express.json());
 
-app.use("/api/v1/calories", calorieEvents);
+app.use("/api/v1/calories", require("./routes/calorieEvents"));
+app.use("/api/v1/users", require("./routes/users"));
+app.use("/api/v1/auth", require("./routes/auth"));
 
 const PORT = process.env.PORT || 5000;
 

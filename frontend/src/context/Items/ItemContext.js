@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-import Reducer from "./Reducer";
+import ItemReducer from "./ItemReducer";
 import axios from "axios";
 
 const initialState = {
@@ -8,10 +8,12 @@ const initialState = {
   loading: true,
 };
 
-export const GlobalContext = createContext(initialState);
+// two more
 
-export const GlobalProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(Reducer, initialState);
+export const ItemContext = createContext(initialState);
+
+export const ItemProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(ItemReducer, initialState);
 
   async function getCalorieEvents() {
     try {
@@ -67,8 +69,9 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
+  // 7 more functions 400 lines approx...
   return (
-    <GlobalContext.Provider
+    <ItemContext.Provider
       value={{
         calorieEvents: state.calorieEvents,
         error: state.error,
@@ -79,6 +82,6 @@ export const GlobalProvider = ({ children }) => {
       }}
     >
       {children}
-    </GlobalContext.Provider>
+    </ItemContext.Provider>
   );
 };

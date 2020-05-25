@@ -1,18 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { GlobalProvider } from './context/GlobalContext';
-
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { ItemProvider } from "./context/Items/ItemContext";
+import { UserProvider } from "./context/Users/UserContext";
 
 ReactDOM.render(
-  <GlobalProvider>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  </GlobalProvider>
-  ,
-  document.getElementById('root')
+  <UserProvider>
+    <ItemProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ItemProvider>
+  </UserProvider>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
+import { ItemContext } from "../context/Items/ItemContext";
 
 export const AddCalorieEvent = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
   const [type, setType] = useState("food");
-  const { addCalorieEvent } = useContext(GlobalContext);
+  const { addCalorieEvent } = useContext(ItemContext);
 
   const onSubmit = (e) => {
     e.preventDefault();

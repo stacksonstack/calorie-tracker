@@ -11,7 +11,7 @@ exports.getCalorieEvents = async (req, res, next) => {
     });
   } catch (err) {
     return res.status(500).json({
-      success: false,
+      completed: false,
       error: err.message,
     });
   }
@@ -19,15 +19,23 @@ exports.getCalorieEvents = async (req, res, next) => {
 
 exports.addCalorieEvent = async (req, res, next) => {
   try {
-    const calorieEvent = await CalorieEvent.create(req.body);
+    const { text, type, amount } = await req.body;
+
+    const newResponse = new CalorieEvent({
+      text,
+      type,
+      amount,
+    });
+
+    await newResponse.save();
 
     return res.status(201).json({
       completed: true,
-      results: calorieEvent,
+      results: newResponse,
     });
   } catch (err) {
     return res.status(500).json({
-      success: false,
+      completed: false,
       error: err.message,
     });
   }
@@ -39,7 +47,7 @@ exports.deleteCalorieEvent = async (req, res, next) => {
 
     if (!calorieEvent) {
       return res.status(404).json({
-        success: false,
+        completed: false,
         error: "No transaction found",
       });
     }
@@ -47,11 +55,11 @@ exports.deleteCalorieEvent = async (req, res, next) => {
     await calorieEvent.remove();
 
     return res.status(200).json({
-      success: "true",
+      completed: true,
     });
   } catch (err) {
     return res.status(500).json({
-      success: false,
+      completed: false,
       error: "Could not delete item",
     });
   }
