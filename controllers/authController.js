@@ -40,7 +40,13 @@ exports.authUser = async (req, res) => {
 };
 
 exports.getUser = async (req, res) => {
-  const user = await User.findById(req.user.id).select("-password");
-
-  res.status(200).json(user);
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({
+      completed: false,
+      error: err.message,
+    });
+  }
 };

@@ -11,7 +11,7 @@ exports.registerNewUser = async (req, res) => {
 
     const user = await User.findOne({ email });
 
-    if (user) throw Error("email already in use");
+    if (user) throw Error("Email already in use");
 
     const newUser = new User({
       name,

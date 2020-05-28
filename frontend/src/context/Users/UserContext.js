@@ -3,12 +3,13 @@ import UserReducer from "./UserReducer";
 import axios from "axios";
 import ErrorReducer from "../Errors/ErrorReducer";
 import { errorState } from "../Errors/ErrorContext";
-
+import { tokenConfig } from "../../utils/utils";
 const initialState = {
   token: localStorage.getItem("token"),
   isAuth: null,
   isLoading: false,
   user: null,
+  balance: null,
 };
 // two more
 
@@ -34,13 +35,18 @@ export const UserProvider = ({ children }) => {
   //const [errState, errorDispatch] = useReducer(ErrorReducer, errorState);
   // two more
 
+  function setBalance(balance) {
+    dispatch({ type: "BALANCE_SET", payload: balance });
+  }
   async function loadUser() {
     try {
       dispatch({ type: "USER_LOADING" });
+      const res = await axios.get(
+        "/api/v1/auth/user",
+        tokenConfig(state.token)
+      );
 
-      const data = await axios.get("/api/v1/auth/user", tokenConfig());
-
-      dispatch({ type: "USER_LOADED", payload: data.data }); //data.user
+      dispatch({ type: "USER_LOADED", payload: res.data }); //data.user
     } catch (error) {
       returnErrors(error.response.data.error, error.response.data.status); // when refactoring error handling e.r.d.e is the proper way to access error message
       dispatch({
@@ -49,23 +55,81 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-  function tokenConfig() {
-    const token = state.token;
+  async function registerUser(name, email, password) {
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const body = JSON.stringify({ name, email, password });
 
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-      },
-    };
-
-    if (token) {
-      config.headers["x-auth-token"] = token;
+      const res = await axios.post("/api/v1/users", body, config);
+      console.log(res);
+      dispatch({
+        type: "REGISTER_SUCCESS",
+        payload: res.data,
+      });
+    } catch (error) {
+      returnErrors(
+        error.response.data.error,
+        error.response.data.status,
+        "REGISTER_FAIL"
+      ); // when refactoring error handling e.r.d.e is the proper way to access error message
+      dispatch({
+        type: "REGISTER_FAIL",
+      });
     }
-
-    return config;
   }
+
+  async function login(email, password) {
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const body = JSON.stringify({ email, password });
+
+      const res = await axios.post("/api/v1/auth", body, config);
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: res.data,
+      });
+    } catch (error) {
+      returnErrors(
+        error.response.data.error,
+        error.response.data.status,
+        "LOGIN_FAIL"
+      ); // when refactoring error handling e.r.d.e is the proper way to access error message
+      dispatch({
+        type: "LOGIN_FAIL",
+      });
+    }
+  }
+
+  function logout() {
+    dispatch({
+      type: "LOGOUT_SUCCESS",
+    });
+  }
+
   return (
-    <UserContext.Provider value={{ loadUser, userError: errState.message }}>
+    <UserContext.Provider
+      value={{
+        loadUser,
+        registerUser,
+        clearErrors,
+        logout,
+        login,
+        setBalance,
+        balance: state.balance,
+        user: state.user,
+        userError: errState,
+        isAuth: state.isAuth,
+        isLoading: state.isLoading,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

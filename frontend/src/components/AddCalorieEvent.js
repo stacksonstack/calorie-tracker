@@ -1,11 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ItemContext } from "../context/Items/ItemContext";
 
 export const AddCalorieEvent = () => {
   const [text, setText] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(null);
   const [type, setType] = useState("food");
-  const { addCalorieEvent } = useContext(ItemContext);
+  const [message, setMessage] = useState(null);
+  const { addCalorieEvent, itemError } = useContext(ItemContext);
+
+  console.log(itemError);
+  useEffect(() => {
+    itemError.id === "ADD_FAILURE"
+      ? setMessage(itemError.message)
+      : setMessage(null);
+  }, [itemError]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -19,12 +27,13 @@ export const AddCalorieEvent = () => {
     addCalorieEvent(newTransaction);
   };
 
-  const handleAmount = (e) => setAmount(Math.abs(e.target.value));
+  const handleAmount = (e) =>
+    amount === 0 ? setAmount(null) : setAmount(Math.abs(e.target.value));
 
   return (
     <>
       <h3>Add new transaction</h3>
-
+      {message ? <p>{message}</p> : <p></p>}
       <form onSubmit={onSubmit}>
         <select onChange={(e) => setType(e.target.value)}>
           <option name="Add Food" value="food">

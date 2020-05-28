@@ -15,11 +15,17 @@ export default (state, action) => {
     action.type === "LOGIN_SUCCESS" ||
     action.type === "REGISTER_SUCCESS"
   ) {
+    localStorage.setItem("token", action.payload.token);
     return {
       ...state,
       ...action.payload,
       isAuth: true,
       isLoading: false,
+    };
+  } else if (action.type === "BALANCE_SET") {
+    return {
+      ...state,
+      balance: action.payload,
     };
   } else if (
     action.type === "AUTH_ERROR" ||

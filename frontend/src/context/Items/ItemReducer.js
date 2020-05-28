@@ -17,10 +17,5 @@ export default (state, action) => {
       loading: false,
       calorieEvents: action.payload,
     };
-  } else if (action.type === "ERROR") {
-    return {
-      ...state,
-      error: action.payload,
-    };
   }
 };
