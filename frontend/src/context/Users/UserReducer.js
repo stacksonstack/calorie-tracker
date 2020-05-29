@@ -10,11 +10,9 @@ export default (state, action) => {
       isAuth: true,
       isLoading: false,
       user: action.payload,
+      balance: action.payload.balance,
     };
-  } else if (
-    action.type === "LOGIN_SUCCESS" ||
-    action.type === "REGISTER_SUCCESS"
-  ) {
+  } else if (action.type === "LOGIN_SUCCESS") {
     localStorage.setItem("token", action.payload.token);
     return {
       ...state,
@@ -22,10 +20,25 @@ export default (state, action) => {
       isAuth: true,
       isLoading: false,
     };
+  } else if (action.type === "REGISTER_SUCCESS") {
+    localStorage.setItem("token", action.payload.token);
+    return {
+      ...state,
+      ...action.payload,
+      isAuth: false,
+      isLoading: false,
+    };
   } else if (action.type === "BALANCE_SET") {
     return {
       ...state,
+      isAuth: true,
       balance: action.payload,
+    };
+  } else if (action.type === "BALANCE_SKIPPED") {
+    return {
+      ...state,
+      isAuth: true,
+      balance: 2000,
     };
   } else if (
     action.type === "AUTH_ERROR" ||

@@ -16,7 +16,7 @@ import {
 
 export const CalcBMR = () => {
   const { setBalance } = useContext(UserContext);
-  const [modalView, setModalView] = useState(false);
+  const [modalView, setModalView] = useState(true);
   const [weight, setWeight] = useState(0);
   const [age, setAge] = useState(0);
   const [height, setHeight] = useState(0);
@@ -24,6 +24,7 @@ export const CalcBMR = () => {
   const [message, setMessage] = useState("");
   const [selectValue, setSelectValue] = useState(1.2);
   const [bmr, setBMR] = useState(0);
+  const { isAuth, skipBalance } = useContext(UserContext);
   const toggle = () => {
     setModalView(!modalView);
   };
@@ -33,8 +34,6 @@ export const CalcBMR = () => {
   //       ? setMessage(userError.message)
   //       : setMessage(null);
   //   }, [userError]);
-
-  useEffect(() => {}, [modalView]);
 
   const onSubmit = () => {
     if (weight === 0 || age === 0 || height === 0) {
@@ -49,7 +48,7 @@ export const CalcBMR = () => {
     setBalance(final * selectValue);
   };
   return (
-    <div>
+    <>
       <NavLink onClick={toggle}>Calc your daily Cal Allowance</NavLink>
       <Modal isOpen={modalView} toggle={setModalView} backdrop="static">
         <ModalHeader toggle={toggle}>BMR</ModalHeader>
@@ -101,6 +100,15 @@ export const CalcBMR = () => {
           </Form>
         </ModalBody>
         <ModalFooter>
+          <Button
+            color="warning"
+            onClick={() => {
+              toggle();
+              skipBalance();
+            }}
+          >
+            Use Default
+          </Button>
           <Button color="primary" onClick={onSubmit}>
             {" "}
             Submit
@@ -110,6 +118,6 @@ export const CalcBMR = () => {
           </Button>
         </ModalFooter>
       </Modal>
-    </div>
+    </>
   );
 };

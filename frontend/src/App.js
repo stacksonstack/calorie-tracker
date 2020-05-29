@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { UserContext } from "./context/Users/UserContext";
 import { AddCalorieEvent } from "./components/AddCalorieEvent";
 import { CalorieEventList } from "./components/CalorieEventList";
@@ -11,15 +11,16 @@ import ModalRoute from "./components/Routes/ModalRoute";
 import { HomePage } from "./components/HomePage";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import { Nav } from "reactstrap";
+import { CalcBMR } from "./components/Modals/CalcBMR";
 
 function App() {
-  const { loadUser } = useContext(UserContext);
-
+  const { loadUser, token, user } = useContext(UserContext);
+  const [redirect, setRedirect] = useState(false);
   useEffect(() => {
-    console.log("d");
     loadUser();
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  console.log(user);
 
   return (
     <>
@@ -33,8 +34,9 @@ function App() {
               <CalorieEventList />
               <AddCalorieEvent />
             </PrivateRoute>
+
             <ModalRoute path="/">
-              <NavBar />
+              <NavBar setRedirect={setRedirect} />
               <HomePage />
             </ModalRoute>
           </Switch>

@@ -4,13 +4,13 @@ import { UserContext } from "../context/Users/UserContext";
 import { RegisterModal } from "./Modals/RegisterModal";
 import { Logout } from "./Logout";
 import { Login } from "./Modals/Login";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { CalcBMR } from "./Modals/CalcBMR";
 
-export const NavBar = (props) => {
+export const NavBar = () => {
+  const [redirect, setRedirect] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { isAuth, user } = useContext(UserContext);
-
   const authLinks = (
     <>
       <NavItem>
@@ -27,7 +27,11 @@ export const NavBar = (props) => {
   const guestLinks = (
     <>
       <NavItem>
-        <RegisterModal />{" "}
+        {!redirect ? (
+          <RegisterModal setRedirect={setRedirect} redirect={redirect} />
+        ) : (
+          <CalcBMR />
+        )}
       </NavItem>
       <NavItem>
         <Login />
@@ -43,6 +47,7 @@ export const NavBar = (props) => {
           {" "}
           <NavLink href="#">calorie v0.8</NavLink>
         </NavItem>
+
         {isAuth ? authLinks : guestLinks}
       </Nav>
     </div>

@@ -9,7 +9,7 @@ const initialState = {
   isAuth: null,
   isLoading: false,
   user: null,
-  balance: null,
+  balance: 2000,
 };
 // two more
 
@@ -34,9 +34,16 @@ export const UserProvider = ({ children }) => {
   }
   //const [errState, errorDispatch] = useReducer(ErrorReducer, errorState);
   // two more
+  async function skipBalance() {
+    dispatch({ type: "BALANCE_SKIPPED", payload: {} });
+  }
+  async function setBalance(balance) {
+    const finalBalance = balance.toFixed(2);
+    const res = await axios.put(`/api/v1/users/${state.user._id}`, {
+      balance: finalBalance,
+    });
 
-  function setBalance(balance) {
-    dispatch({ type: "BALANCE_SET", payload: balance });
+    dispatch({ type: "BALANCE_SET", payload: finalBalance });
   }
   async function loadUser() {
     try {
@@ -65,7 +72,6 @@ export const UserProvider = ({ children }) => {
       const body = JSON.stringify({ name, email, password });
 
       const res = await axios.post("/api/v1/users", body, config);
-      console.log(res);
       dispatch({
         type: "REGISTER_SUCCESS",
         payload: res.data,
@@ -123,6 +129,8 @@ export const UserProvider = ({ children }) => {
         logout,
         login,
         setBalance,
+        skipBalance,
+        token: state.token,
         balance: state.balance,
         user: state.user,
         userError: errState,

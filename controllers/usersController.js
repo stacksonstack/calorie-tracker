@@ -5,6 +5,26 @@ const jwt = require("jsonwebtoken");
 
 dotenv.config({ path: "./config/config.env" });
 
+exports.updateBalance = async (req, res) => {
+  try {
+    var balance = { balance: req.body.balance };
+
+    var filter = { _id: req.params.id };
+
+    var newOne = await User.findOneAndUpdate(filter, balance, {
+      new: true,
+    });
+    res.json({
+      message: "Balance updated successfully",
+      user: newOne,
+    });
+  } catch (err) {
+    res.json({
+      error: err,
+    });
+  }
+};
+
 exports.registerNewUser = async (req, res) => {
   try {
     const { name, email, password } = await req.body;

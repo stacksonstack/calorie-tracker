@@ -13,6 +13,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please add password"],
   },
+  balance: {
+    type: Number,
+    default: 2000,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
