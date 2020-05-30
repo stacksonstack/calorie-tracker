@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Nav, NavItem, NavLink } from "reactstrap";
+import { Nav, NavItem, NavLink, Spinner } from "reactstrap";
 import { UserContext } from "../context/Users/UserContext";
 import { RegisterModal } from "./Modals/RegisterModal";
 import { Logout } from "./Logout";
@@ -13,11 +13,11 @@ export const NavBar = () => {
   const { isAuth, user } = useContext(UserContext);
   const authLinks = (
     <>
-      <div className="welcomeUser">
-        <span>
+      <NavItem>
+        <span className="navbar-text mr-2">
           <strong>{user && `Welcome ${user.name}`}</strong>
         </span>
-      </div>
+      </NavItem>
       <NavItem>
         <Logout />
       </NavItem>
@@ -41,13 +41,15 @@ export const NavBar = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div className="navBar">
+    <div>
       <Nav tabs>
         <NavItem>
           {" "}
           <NavLink href="#">calorie v0.8</NavLink>
         </NavItem>
-
+        <NavItem>
+          <Spinner color="primary" />
+        </NavItem>
         {isAuth ? authLinks : guestLinks}
       </Nav>
     </div>

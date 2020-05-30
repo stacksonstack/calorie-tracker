@@ -1,3 +1,11 @@
+html {
+  max-width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+     background: rgb(21,21,228);
+background: radial-gradient(circle, rgba(21,21,228,1) 37%, rgba(18,18,232,1) 70%, rgba(46,12,0,1) 70%, rgba(46,30,30,1) 72%, rgba(120,120,120,1) 73%);   
+  
+}
 .calorieTracker {
   display: grid;
   grid-template-areas:

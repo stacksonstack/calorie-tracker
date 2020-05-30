@@ -11,9 +11,9 @@ export const CalorieEventList = () => {
   }, []);
 
   return (
-    <div className="history" >
+    <div className="history">
       <h3>History</h3>
-      <ul className="list">
+      <ul id="list" className="list">
         {calorieEvents.map((cEvent) => (
           <CalorieEvent key={cEvent._id} calorieEvent={cEvent} />
         ))}
