@@ -1,34 +1,93 @@
-.App {
-  text-align: center;
-}
+.calorieTracker {
+  display: grid;
+  grid-template-areas:
+    "balanceNum calorieInfo"
+    "calorieForm history";
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  justify-items: center;
+  padding-top: 30px;
+  grid-row-gap: 40px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.balance {
+  grid-area: balanceNum;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  background-color: #ee822f;
+  width: 90%;
+  border-radius: 25px;
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+.updateBalance {
+  width: 25%;
+  margin: auto;
+}
+.balanceNum {
+  font-size: 70px;
+  text-align: center;
+}
+#addTransaction{
+  text-align: center;
+}
+li{
+  list-style-type: none;
+}
+.calorieForm {
+  grid-area: calorieForm;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  background-color: #dedee3;
+  width: 90%;
+  border-radius: 25px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+.droplist {
+  padding: 10px;
+}
+.calorieAmount {
+  padding: 10px;
+}
+.addAmount {
+  padding: 10px;
+}
+.calorieInfo {
+  grid-area: calorieInfo;
+  background-color: #dedee3;
+  width: 90%;
+  border-radius: 25px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.8rem;
+  height: 150px;
+}
+.caloriesIn {
+  font-size: 10px;
+}
+.caloriesOut {
+  font-size: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.history {
+  grid-area: history;
+  background-color: #dedee3;
+  width: 90%;
+  border-radius: 25px;
+  text-align: center;
+  padding-top: 15px;
+  margin-top: -160px;
 }
 
-@keyframes App-logo-spin {
+.navBar {
+  width: 100%;
+  background-color: #0a7aeb;
+}
+
+/*@keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -36,3 +95,4 @@
     transform: rotate(360deg);
   }
 }
+*/

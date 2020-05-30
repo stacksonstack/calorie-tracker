@@ -18,12 +18,16 @@ export const Balance = () => {
 
   return (
     <>
+    <div className="balance">
       {" "}
+      <div className="balanceNum">
       {balance}{" "}
-      <Button color="secondary" onClick={() => setBMR(!bmr)}>
+      </div>
+      <Button color="secondary" onClick={() => setBMR(!bmr)} className="updateBalance">
         Update BMR
       </Button>
       {bmr && <CalcBMR />}
+      </div>
     </>
   );
 };

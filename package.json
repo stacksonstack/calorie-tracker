@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/securethebags/calorie-tracker#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.0",
     "dotenv": "^8.2.0",
