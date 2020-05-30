@@ -1,3 +1,16 @@
+html {
+  min-width: 90%;
+  margin-top: 4%;
+  margin-bottom: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+     background: rgb(21,21,228);
+background: radial-gradient(circle, rgba(21,21,228,1) 37%, rgba(18,18,232,1) 70%, rgba(46,12,0,1) 70%, rgba(46,30,30,1) 72%, rgba(120,120,120,1) 73%);   
+  
+}
+.dead {
+  color: #0a7aeb;
+}
 .calorieTracker {
   display: grid;
   grid-template-areas:
@@ -8,6 +21,60 @@
   padding-top: 30px;
   grid-row-gap: 40px;
 }
+.homepage {
+  min-height: 90%
+}
+.delete-btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+.delete-btn:focus {
+  outline: 0;
+}
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+.list li.plus {
+  border-right: 5px solid #2ecc71;
+}
+
+.list li.minus {
+  border-right: 5px solid #c0392b;
+}
+
+.list li:hover .delete-btn {
+  opacity: 1;
+}
+.list li {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  color: #333;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 10px;
+  margin: 1px 0;
+}
+
 .balance {
   grid-area: balanceNum;
   display: flex;
@@ -71,7 +138,11 @@ li {
 .caloriesOut {
   font-size: 10px;
 }
-
+#deadp {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px;
+}
 .history {
   grid-area: history;
   background-color: #dedee3;
