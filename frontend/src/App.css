@@ -8,6 +8,58 @@
   padding-top: 30px;
   grid-row-gap: 40px;
 }
+
+.delete-btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+.delete-btn:focus {
+  outline: 0;
+}
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+.list li.plus {
+  border-right: 5px solid #2ecc71;
+}
+
+.list li.minus {
+  border-right: 5px solid #c0392b;
+}
+
+.list li:hover .delete-btn {
+  opacity: 1;
+}
+.list li {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  color: #333;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 10px;
+  margin: 1px 0;
+}
+
 .balance {
   grid-area: balanceNum;
   display: flex;

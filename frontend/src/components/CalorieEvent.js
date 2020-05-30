@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import { ItemContext } from "../context/Items/ItemContext";
+import { Badge } from "reactstrap";
 
 export const CalorieEvent = ({ calorieEvent }) => {
   const { deleteCalorieEvent } = useContext(ItemContext);
-
-  const inputVariation =
-    calorieEvent.type === "exercise" ? "Burned while " : "Consumed ";
 
   const amount =
     calorieEvent.type === "exercise"
@@ -13,12 +11,16 @@ export const CalorieEvent = ({ calorieEvent }) => {
       : calorieEvent.amount;
 
   return (
-    <li>
-      {inputVariation}
+    <li className={calorieEvent.type === "exercise" ? "minus" : "plus"}>
       <span>
-       {calorieEvent.text} Calories:{amount}
+        {calorieEvent.text} <Badge tab> Calories: {amount}</Badge>
       </span>
-      <button onClick={() => deleteCalorieEvent(calorieEvent._id)}>x</button>
+      <button
+        className="delete-btn"
+        onClick={() => deleteCalorieEvent(calorieEvent._id)}
+      >
+        x
+      </button>
     </li>
   );
 };

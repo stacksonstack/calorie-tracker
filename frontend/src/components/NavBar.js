@@ -13,12 +13,11 @@ export const NavBar = () => {
   const { isAuth, user } = useContext(UserContext);
   const authLinks = (
     <>
-      <NavItem>
-        <div className="welcomeUser">
-          <span>
-          <strong>{user && `Welcome ${user.name}`}</strong></span>
-        </div>
-      </NavItem>
+      <div className="welcomeUser">
+        <span>
+          <strong>{user && `Welcome ${user.name}`}</strong>
+        </span>
+      </div>
       <NavItem>
         <Logout />
       </NavItem>
