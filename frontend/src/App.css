@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   background-color: #ee822f;
-  width: 90%;
+  width: 70%;
   border-radius: 25px;
   padding-bottom: 30px;
   padding-top: 10px;
@@ -26,10 +26,10 @@
   font-size: 70px;
   text-align: center;
 }
-#addTransaction{
+#addTransaction {
   text-align: center;
 }
-li{
+li {
   list-style-type: none;
 }
 .calorieForm {
@@ -40,7 +40,7 @@ li{
   justify-content: center;
   align-items: center;
   background-color: #dedee3;
-  width: 90%;
+  width: 70%;
   border-radius: 25px;
   padding-bottom: 30px;
   padding-top: 30px;
@@ -75,7 +75,7 @@ li{
 .history {
   grid-area: history;
   background-color: #dedee3;
-  width: 90%;
+  width: 70%;
   border-radius: 25px;
   text-align: center;
   padding-top: 15px;
