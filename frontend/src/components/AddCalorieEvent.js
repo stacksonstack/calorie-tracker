@@ -33,7 +33,7 @@ export const AddCalorieEvent = () => {
   return (
     <>
     <div className="calorieForm">
-      <h3 id= "addTransaction">Add new transaction</h3>
+      <h3 id= "addTransaction">Add New Transaction</h3>
       {message ? <p>{message}</p> : <p></p>}
       <form onSubmit={onSubmit} >
         <div className="droplist">
@@ -51,7 +51,8 @@ export const AddCalorieEvent = () => {
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Enter Calorie Event(Food in/Exercise Out)"
+            placeholder="Enter Calorie Event"
+            
           />
         </div>
         <div className="addAmount">
@@ -59,7 +60,7 @@ export const AddCalorieEvent = () => {
             type="number"
             value={amount}
             onChange={handleAmount}
-            placeholder="Enter amount..."
+            placeholder="Enter Calorie Amount"
           />
         </div>
         <button className="addBtn">Add transaction</button>
