@@ -14,9 +14,10 @@ export const NavBar = () => {
   const authLinks = (
     <>
       <NavItem>
-        <span className="navbar-text mr-2">
-          <strong>{user && `Welcome ${user.name}`}</strong>
-        </span>
+        <div className="welcomeUser">
+          <span>
+          <strong>{user && `Welcome ${user.name}`}</strong></span>
+        </div>
       </NavItem>
       <NavItem>
         <Logout />
@@ -41,7 +42,7 @@ export const NavBar = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div className="navBar">
       <Nav tabs>
         <NavItem>
           {" "}

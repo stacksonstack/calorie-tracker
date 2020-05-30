@@ -16,7 +16,7 @@ export const CalorieEvent = ({ calorieEvent }) => {
     <li>
       {inputVariation}
       <span>
-        {calorieEvent.text} Calories:{amount}
+       {calorieEvent.text} Calories:{amount}
       </span>
       <button onClick={() => deleteCalorieEvent(calorieEvent._id)}>x</button>
     </li>

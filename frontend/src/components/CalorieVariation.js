@@ -13,14 +13,14 @@ export const CalorieVariation = () => {
     .reduce((acc, { amount }) => (acc += amount), 0);
 
   return (
-    <div className="inc-exp-container">
+    <div className="calorieInfo">
       <div>
-        <h4>Food (Calories In)</h4>
-        <p className="money plus">{caloriesConsumed}</p>
+        <h4 className="caloriesIn">Food (Calories In)</h4>
+        <p className="caloriePlus">{caloriesConsumed}</p>
       </div>
       <div>
-        <h4>Exercise (Calories Out)</h4>
-        <p className="money minus">{caloriesBurned}</p>
+        <h4 className="caloriesOut">Exercise (Calories Out)</h4>
+        <p className="calorieMinus">{caloriesBurned}</p>
       </div>
     </div>
   );

@@ -25,22 +25,26 @@ function App() {
   return (
     <>
       <Router>
-        <div>
+        
           <Switch>
             <PrivateRoute path="/protected">
               <NavBar />
+              <div className="calorieTracker">
               <Balance />
               <CalorieVariation />
               <CalorieEventList />
               <AddCalorieEvent />
+              </div>
             </PrivateRoute>
-
+        
+        <div>
             <ModalRoute path="/">
               <NavBar setRedirect={setRedirect} />
               <HomePage />
             </ModalRoute>
-          </Switch>
         </div>
+          </Switch>
+        
       </Router>
     </>
   );

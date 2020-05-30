@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
 import { ItemProvider } from "./context/Items/ItemContext";
 import { UserProvider } from "./context/Users/UserContext";

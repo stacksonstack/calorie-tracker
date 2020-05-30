@@ -32,10 +32,12 @@ export const AddCalorieEvent = () => {
 
   return (
     <>
-      <h3>Add new transaction</h3>
+    <div className="calorieForm">
+      <h3 id= "addTransaction">Add new transaction</h3>
       {message ? <p>{message}</p> : <p></p>}
-      <form onSubmit={onSubmit}>
-        <select onChange={(e) => setType(e.target.value)}>
+      <form onSubmit={onSubmit} >
+        <div className="droplist">
+        <select onChange={(e) => setType(e.target.value)} >
           <option name="Add Food" value="food">
             Add Food Item
           </option>
@@ -43,8 +45,8 @@ export const AddCalorieEvent = () => {
             Add Exercise activity
           </option>
         </select>
-        <div className="form-control">
-          <label htmlFor="text">Text</label>
+        </div>
+        <div className="calorieAmount">
           <input
             type="text"
             value={text}
@@ -52,8 +54,7 @@ export const AddCalorieEvent = () => {
             placeholder="Enter Calorie Event(Food in/Exercise Out)"
           />
         </div>
-        <div className="form-control">
-          <label htmlFor="amount">Amount</label>
+        <div className="addAmount">
           <input
             type="number"
             value={amount}
@@ -61,8 +62,9 @@ export const AddCalorieEvent = () => {
             placeholder="Enter amount..."
           />
         </div>
-        <button className="btn">Add transaction</button>
+        <button className="addBtn">Add transaction</button>
       </form>
+      </div>
     </>
   );
 };
