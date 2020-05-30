@@ -41,12 +41,14 @@ export const NavBar = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div className="navBar">
       <Nav tabs>
+      <div id="navTitle">
         <NavItem>
           {" "}
+          
           <NavLink href="#">calorie v0.8</NavLink>
-        </NavItem>
+        </NavItem></div>
         <NavItem>
           <Spinner color="primary" />
         </NavItem>
