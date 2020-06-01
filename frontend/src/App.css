@@ -1,11 +1,15 @@
+
 html body {
   background-color: #f4f4f6;
+
 }
 .dead {
   color: #1485f5;
 }
 
 .calorieTracker {
+  height: 85vh;
+  margin-top: 10%;
   display: grid;
   grid-template-areas:
     "balanceNum history"
@@ -36,6 +40,12 @@ html body {
     grid-row-gap: 40px;
     padding-bottom: 50px;
   }
+}
+
+.homepage {
+  margin-top: 3%;
+  height: 75vh;
+  font-family:"Trebuchet MS", Helvetica, sans-serif
 }
 
 .delete-btn {
