@@ -15,7 +15,6 @@ import { CalcBMR } from "./components/Modals/CalcBMR";
 
 function App() {
   const { loadUser, token, user } = useContext(UserContext);
-  const [redirect, setRedirect] = useState(false);
   useEffect(() => {
     loadUser();
     //eslint-disable-next-line react-hooks/exhaustive-deps

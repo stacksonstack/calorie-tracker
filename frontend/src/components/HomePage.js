@@ -1,106 +1,99 @@
-import React, { useState } from "react";
+import React, { useContext} from "react";
 import { Jumbotron, Container, Badge, Button, Col, Row } from "reactstrap";
 import { RegisterModal } from "./Modals/RegisterModal";
 import { Login } from "./Modals/Login";
 import { CalcBMR } from "./Modals/CalcBMR";
+import { UserContext } from "../context/Users/UserContext";
 export const HomePage = () => {
-  const [redirect, setRedirect] = useState(false);
-
+  const { redirect, setRedirect }= useContext(UserContext);
   return (
     <>
       <div className="homepage">
         <Jumbotron fluid center>
-          <Container fluid>
+          <Container fluid id="test">
             <Row>
-              <Col xs="6">
-                <h1 color="primary" className="display-2">
+              <Col xs="6" id="homeTitle">
+                <h1 color="primary" className="display-3">
                   {" "}
-                  euphoric, caloric <Badge color="secondary">v.1.0</Badge>{" "}
+                  Calorie Tracker{" "}
+                  <Badge pill color="primary">
+                    <h4>v1.0</h4>
+                  </Badge>{" "}
                 </h1>
               </Col>
-              <Col xs="6">
-                <h1 className="display-3 dead">
+              <Col xs="6" id="homeBox">
+                <h1 className="display-3">
                   <div
                     id="deadp"
                     className="floatRight"
                     style={{
                       textalign: "center",
                       color: "A49BE8",
-                      fontFamily: "Luminari ",
+                      fontFamily: "Luminari",
                       marginRight: "0px",
                       padding: "10px",
                       boxshadow: "5px 10px",
-                      border: "13px double rgba(10,51,117,0.53)",
+                      border: "13px double rgb(20, 133, 245, 0.53)",
                       borderradius: "40px 7px 22px 0px",
                     }}
                   >
-                    created by deadPixels{" "}
+                    Created By DeadPixels{" "}
                   </div>
                 </h1>
               </Col>
             </Row>
+            <div id="homeBio">
+              <h1 className="display-4">counting calories? 🔍</h1>
 
-            <hr className="my-4" />
-            <hr className="my-2" />
-            <h1 className="display-4"> home workouts can be 🤷‍♀️ but.. </h1>
-            <h1 className="display-4">accuracy is always 👏👏👏👏 </h1>
-            <hr className="my-4" />
-            <hr className="my-2" />
-            <h2 className="lead display-4">
-              deadPixels invites you to join v1.0 of our wellness application
-            </h2>
-            <p className="lead display-4">
+              <h2>keeping tabs on what we eat isn't always easy..</h2>
+              <h1>but deadPixels can help!</h1>
+            </div>
+            <p className="lead display-4" id="homeBtns">
               {!redirect ? (
                 <Button color="primary">
                   {" "}
                   <Badge color="primary" pill>
                     {" "}
                     <RegisterModal
-                      setRedirect={setRedirect}
-                      redirect={redirect}
+                   
                     />
                   </Badge>
                 </Button>
               ) : (
                 <CalcBMR />
               )}
-              <Button color="secondary">
-                <Badge color="secondary" pill>
+              <Button>
+                <Badge color="#1485f5" pill>
                   <Login />{" "}
                 </Badge>
               </Button>
             </p>
-            <hr className="my-2" />
           </Container>
-          <div></div>
           <br></br>
-          <h2 className="dispaly-3">
-            <div style={{ textAlign: "center" }}>
-              {" "}
-              Created by Anthony Jimenez and Stacey Carrillo{" "}
-            </div>
-          </h2>
-          <hr className="my-2" />
 
-          <Container className="lead">
-            <hr className="my-2" />
-            <h3>
-              Built with: React, Node, Mongoose, MongoDB, Axios, reactstrap,
-              reactrouter, react-hooks, express, ES6+, JWT, ContextAPI
-              <br></br>Context API and useReducer were used for state mangement
-              <br></br>
-            </h3>
-
-            <hr className="my-2" />
-            <hr className="my-2" />
+          <Container className="lead" id="websiteInfo">
             <br></br>
-            <h1 className="display-6">Info for interested developers</h1>
-            <p className="lead">
+            <h1>Info for interested developers</h1>
+            <p>
               This site is ready for use. However, we will be continuing to
               update and add new features. If you would like to leave feedback
               or contribute please email me at anthonyjim96@gmail.com
             </p>
-            <hr className="my-2" />
+            <p lead>
+              Built with: React, Node, Mongoose, MongoDB, Axios, reactstrap,
+              reactrouter, react-hooks, express, ES6+, JWT, ContextAPI
+              <br></br>Context API and useReducer were used for state mangement
+              <br></br>
+            </p>{" "}
+            <h4>
+              <div>
+                {" "}
+                Anthony Jimenez and Stacey Carrillo <hr></hr>
+                Repo Link
+                <hr className="my-2" />
+                Github Links
+              </div>
+            </h4>
           </Container>
         </Jumbotron>
       </div>

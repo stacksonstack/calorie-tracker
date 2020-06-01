@@ -21,7 +21,8 @@ export const Balance = () => {
     <div className="balance">
       {" "}
       <div className="balanceNum">
-      {balance}{" "}
+      Daily allowance: {balance}{" "}
+      <br>Remaining calories: {balance - total}</br> 
       </div>
       <Button color="secondary" onClick={() => setBMR(!bmr)} className="updateBalance">
         Update BMR
