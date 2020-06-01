@@ -2,13 +2,14 @@
 html body {
   background-color: #f4f4f6;
 
+
 }
 .dead {
   color: #1485f5;
 }
 
 .calorieTracker {
-  height: 85vh;
+  min-height: 100%;
   margin-top: 10%;
   display: grid;
   grid-template-areas:
@@ -44,7 +45,7 @@ html body {
 
 .homepage {
   margin-top: 3%;
-  height: 75vh;
+  height: 100%;
   font-family:"Trebuchet MS", Helvetica, sans-serif
 }
 
@@ -109,11 +110,11 @@ html body {
   margin-bottom: -50px;
 }
 .updateBalance {
-  width: 25%;
+  
   margin: auto;
 }
 .balanceNum {
-  font-size: 70px;
+  font-size: 40px;
   text-align: center;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
@@ -198,7 +199,7 @@ input {
   margin-top: 10px;
 }
 .homepage {
-  min-height: 100vh;
+  height: 100%;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 
   width: 80%;

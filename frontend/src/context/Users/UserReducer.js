@@ -25,19 +25,18 @@ export default (state, action) => {
     return {
       ...state,
       ...action.payload,
-      isAuth: false,
+      isAuth: true,
       isLoading: false,
+      redirect: true,
     };
   } else if (action.type === "BALANCE_SET") {
     return {
       ...state,
-      isAuth: true,
       balance: action.payload,
     };
   } else if (action.type === "BALANCE_SKIPPED") {
     return {
       ...state,
-      isAuth: true,
       balance: 2000,
     };
   } else if (
@@ -53,6 +52,7 @@ export default (state, action) => {
       user: null,
       isAuth: false,
       isLoading: false,
+      redirect: false,
     };
   } else {
     return state;
