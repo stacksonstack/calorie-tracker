@@ -18,16 +18,20 @@ export const Balance = () => {
 
   return (
     <>
-    <div className="balance">
-      {" "}
-      <div className="balanceNum">
-      Daily allowance: {balance}{" "}
-      <br>Remaining calories: {balance - total}</br> 
-      </div>
-      <Button color="secondary" onClick={() => setBMR(!bmr)} className="updateBalance">
-        Update BMR
-      </Button>
-      {bmr && <CalcBMR />}
+      <div className="balance">
+        {" "}
+        <div className="balanceNum">
+          Daily allowance: {balance} <br />
+          Remaining calories: {balance - total}
+        </div>
+        <Button
+          color="secondary"
+          onClick={() => setBMR(!bmr)}
+          className="updateBalance"
+        >
+          Update BMR
+        </Button>
+        {bmr && <CalcBMR />}
       </div>
     </>
   );

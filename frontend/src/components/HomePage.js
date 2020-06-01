@@ -1,11 +1,11 @@
-import React, { useContext} from "react";
+import React, { useState } from "react";
 import { Jumbotron, Container, Badge, Button, Col, Row } from "reactstrap";
 import { RegisterModal } from "./Modals/RegisterModal";
 import { Login } from "./Modals/Login";
 import { CalcBMR } from "./Modals/CalcBMR";
 import { UserContext } from "../context/Users/UserContext";
 export const HomePage = () => {
-  const { redirect, setRedirect }= useContext(UserContext);
+  const [redirect, setRedirect] = useState(false);
   return (
     <>
       <div className="homepage">
@@ -55,7 +55,8 @@ export const HomePage = () => {
                   <Badge color="primary" pill>
                     {" "}
                     <RegisterModal
-                   
+                      setRedirect={setRedirect}
+                      redirect={redirect}
                     />
                   </Badge>
                 </Button>
