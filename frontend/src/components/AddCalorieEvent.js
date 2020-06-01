@@ -1,5 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
 import { ItemContext } from "../context/Items/ItemContext";
+import {
+  NavLink,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Input,
+  Label,
+  Alert,
+  Select,
+  Form,
+} from "reactstrap";
 
 export const AddCalorieEvent = () => {
   const [text, setText] = useState("");
@@ -32,39 +45,42 @@ export const AddCalorieEvent = () => {
 
   return (
     <>
-    <div className="calorieForm">
-      <h3 id= "addTransaction">Add New Transaction</h3>
-      {message ? <p>{message}</p> : <p></p>}
-      <form onSubmit={onSubmit} >
-        <div className="droplist">
-        <select onChange={(e) => setType(e.target.value)} >
-          <option name="Add Food" value="food">
-            Add Food Item
-          </option>
-          <option name="Add Exercise" value="exercise">
-            Add Exercise activity
-          </option>
-        </select>
-        </div>
-        <div className="calorieAmount">
-          <input
-            type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Enter Calorie Event"
-            
-          />
-        </div>
-        <div className="addAmount">
-          <input
-            type="number"
-            value={amount}
-            onChange={handleAmount}
-            placeholder="Enter Calorie Amount"
-          />
-        </div>
-        <button className="addBtn">Add transaction</button>
-      </form>
+      <div className="calorieForm">
+        <h3 fluid id="addTransaction">
+          Add below
+        </h3>
+        {message ? <p>{message}</p> : <p></p>}
+        <Form onSubmit={onSubmit}>
+          <div className="droplist">
+            <Input type="select" onChange={(e) => setType(e.target.value)}>
+              <option name="Add Food" value="food">
+                Add Food Item
+              </option>
+              <option name="Add Exercise" value="exercise">
+                Add Exercise activity
+              </option>
+            </Input>
+          </div>
+          <div className="calorieAmount">
+            <Input
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="Enter Calorie Event"
+            />
+          </div>
+          <div className="addAmount">
+            <Input
+              type="number"
+              value={amount}
+              onChange={handleAmount}
+              placeholder="Enter Calorie Amount"
+            />
+          </div>
+          <Button color="primary" className="addBtn">
+            Add Item{" "}
+          </Button>
+        </Form>
       </div>
     </>
   );

@@ -1,22 +1,12 @@
-html {
-  max-width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  background: rgb(21, 21, 228);
-  background: radial-gradient(
-    circle,
-    rgba(21, 21, 228, 1) 37%,
-    rgba(20, 133, 245, 1) 70%,
-    rgba(240, 141, 66, 1) 70%,
-    rgba(46, 30, 30, 1) 72%,
-    rgb(173, 173, 178) 73%
-  );
- 
-  
+
+html body {
+  background-color: #f4f4f6;
+
 }
 .dead {
-  color: #0a7aeb;
+  color: #1485f5;
 }
+
 .calorieTracker {
   height: 85vh;
   margin-top: 10%;
@@ -27,13 +17,15 @@ html {
     "calorieForm history";
 
   justify-items: center;
-  padding-top: 20px;
+  padding-top: 50px;
+  
   grid-row-gap: 40px;
-  padding-bottom: 20px;
+  padding-bottom: 50px;
   max-width: 80%;
   margin: auto;
-  font-family:"Trebuchet MS", Helvetica, sans-serif;
-  
+  padding-right: 70px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  background-color: white;
 }
 @media (max-width: 920px) {
   .calorieTracker {
@@ -41,16 +33,21 @@ html {
     grid-template-areas:
       "balanceNum"
       "calorieInfo"
-      "calorieForm"
-      "history";
-      font-family:"Trebuchet MS", Helvetica, sans-serif
+      "history"
+      "calorieForm";
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    padding-top: 50px;
+    grid-row-gap: 40px;
+    padding-bottom: 50px;
   }
 }
+
 .homepage {
   margin-top: 3%;
   height: 75vh;
   font-family:"Trebuchet MS", Helvetica, sans-serif
 }
+
 .delete-btn {
   cursor: pointer;
   background-color: #e74c3c;
@@ -104,7 +101,7 @@ html {
   grid-area: balanceNum;
   display: flex;
   flex-direction: column;
-  background-color: #1485F5;
+  background-color: #1485f5;
   width: 70%;
   border-top-left-radius: 50px;
   padding-bottom: 80px;
@@ -118,13 +115,11 @@ html {
 .balanceNum {
   font-size: 70px;
   text-align: center;
-  font-family:"Trebuchet MS", Helvetica, sans-serif;
-
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 #addTransaction {
   text-align: center;
-  font-family:"Trebuchet MS", Helvetica, sans-serif;
-
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 li {
   list-style-type: none;
@@ -151,15 +146,15 @@ li {
   padding: 10px;
 }
 .addAmount {
-  padding: 10px; 
+  padding: 10px;
   width: 300px;
 }
-input{
+input {
   width: 100%;
 }
 .calorieInfo {
   grid-area: calorieInfo;
-  background-color: #F08D42;
+  background-color: #f08d42;
   width: 70%;
   text-align: center;
   display: inline-flex;
@@ -176,19 +171,15 @@ input{
   font-size: 10px;
 }
 
-#deadp {
-  border: 1px solid;
-  padding: 10px;
-  box-shadow: 5px 10px;
-}
 .history {
   grid-area: history;
   background-color: #f4f4f6;
   width: 90%;
   text-align: center;
   padding-top: 15px;
-  border-bottom-left-radius: 50px;
-  border-top-right-radius: 50px;
+  
+  border-bottom-right-radius: 50px;
+  border-top-left-radius: 50px;
 }
 
 .navBar {
@@ -196,16 +187,59 @@ input{
   background-color: #f4f4f6;
   display: flex;
   justify-content: space-around;
-  
-  font-family:"Trebuchet MS", Helvetica, sans-serif;
+
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
   height: 40px;
   margin: 0;
 }
 
-.addBtn{
+.addBtn {
   margin-left: 10px;
-  margin-top: 10px ;
+  margin-top: 10px;
 }
+.homepage {
+  min-height: 100vh;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+
+  width: 80%;
+  margin: auto;
+}
+
+#deadp {
+  border: 1px solid;
+  padding: 10px;
+  width: 30%;
+  height: 70px;
+  font-size: 15px;
+
+}
+ #homeTitle{
+   font-size: 100px;
+   margin-left: 10%;
+ }
+ #homeBox{
+   margin-left: 60%;
+   position: absolute;
+   margin-top: 115px;
+ }
+ #websiteInfo{
+   display: flex;
+   flex-direction: column;
+   margin-left: 10%;
+   width: 80%;
+   margin-right: 10%;
+ }
+ #homeBtns{
+   margin-left: 10%;
+ }
+#homeBio{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
+
+
 
 /*@keyframes App-logo-spin {
   from {
