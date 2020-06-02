@@ -34,11 +34,8 @@ export default (state, action) => {
       ...state,
       balance: action.payload,
     };
-  } else if (action.type === "BALANCE_SKIPPED") {
-    return {
-      ...state,
-      balance: 2000,
-    };
+  } else if (action.type === "UPDATE_EMAIL") {
+    return { ...state, user: { ...state.user, email: action.payload } };
   } else if (
     action.type === "AUTH_ERROR" ||
     action.type === "LOGIN_OUT" ||

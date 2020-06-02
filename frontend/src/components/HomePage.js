@@ -1,11 +1,19 @@
-import React, { useState } from "react";
-import { Jumbotron, Container, Badge, Button, Col, Row } from "reactstrap";
+import React, { useContext } from "react";
+import {
+  Jumbotron,
+  Container,
+  Badge,
+  Button,
+  Col,
+  Row,
+  NavLink,
+} from "reactstrap";
 import { RegisterModal } from "./Modals/RegisterModal";
 import { Login } from "./Modals/Login";
 import { CalcBMR } from "./Modals/CalcBMR";
 import { UserContext } from "../context/Users/UserContext";
 export const HomePage = () => {
-  const [redirect, setRedirect] = useState(false);
+  const { redirect } = useContext(UserContext);
   return (
     <>
       <div className="homepage">
@@ -49,20 +57,14 @@ export const HomePage = () => {
               <h1>but deadPixels can help!</h1>
             </div>
             <p className="lead display-4" id="homeBtns">
-              {!redirect ? (
-                <Button color="primary">
+              <Button color="primary">
+                {" "}
+                <Badge color="primary" pill>
                   {" "}
-                  <Badge color="primary" pill>
-                    {" "}
-                    <RegisterModal
-                      setRedirect={setRedirect}
-                      redirect={redirect}
-                    />
-                  </Badge>
-                </Button>
-              ) : (
-                <CalcBMR />
-              )}
+                  <RegisterModal />
+                </Badge>
+              </Button>
+
               <Button>
                 <Badge color="#1485f5" pill>
                   <Login />{" "}
@@ -89,10 +91,16 @@ export const HomePage = () => {
             <h4>
               <div>
                 {" "}
-                Anthony Jimenez and Stacey Carrillo <hr></hr>
-                Repo Link
+                <a href="https://gatsby-anthonyjimenez.netlify.app/">
+                  Anthony Jimenez{" "}
+                </a>{" "}
+                and
+                <a href="https://github.com/stacksonstack"> Stacey Carrillo </a>
+                <hr></hr>
+                <a href="https://github.com/securethebags/calorie-tracker">
+                  Repo Link{" "}
+                </a>
                 <hr className="my-2" />
-                Github Links
               </div>
             </h4>
           </Container>

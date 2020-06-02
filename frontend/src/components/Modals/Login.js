@@ -47,17 +47,19 @@ export const Login = () => {
         </ModalHeader>
         <ModalBody>
           {message ? <Alert color="danger">{message}</Alert> : null}
-          <Label>Password</Label>
-          <Input
-            type="password"
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+
           <Label>Email</Label>
           <Input
             type="text"
             name="email"
             onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <Label>Password</Label>
+          <Input
+            type="password"
+            name="password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </ModalBody>
         <ModalFooter>

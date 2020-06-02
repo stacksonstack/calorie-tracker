@@ -10,6 +10,7 @@ const initialState = {
   isLoading: false,
   user: null,
   balance: 2000,
+  redirect: false,
 };
 // two more
 
@@ -34,9 +35,7 @@ export const UserProvider = ({ children }) => {
   }
   //const [errState, errorDispatch] = useReducer(ErrorReducer, errorState);
   // two more
-  async function skipBalance() {
-    dispatch({ type: "BALANCE_SKIPPED", payload: {} });
-  }
+
   async function setBalance(balance) {
     const finalBalance = balance.toFixed(2);
     const res = await axios.put(`/api/v1/users/${state.user._id}`, {
@@ -87,6 +86,21 @@ export const UserProvider = ({ children }) => {
       });
     }
   }
+  async function updateEmail(email) {
+    try {
+      const res = await axios.put(`/api/v1/users/email/${state.user._id}`, {
+        email: email,
+      });
+
+      dispatch({ type: "UPDATE_EMAIL", payload: email });
+    } catch (error) {
+      returnErrors(
+        error.response.data.error,
+        error.response.data.status,
+        "UPDATE_FAIL"
+      );
+    }
+  }
 
   async function login(email, password) {
     try {
@@ -124,12 +138,13 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         loadUser,
+        updateEmail,
         registerUser,
         clearErrors,
         logout,
         login,
         setBalance,
-        skipBalance,
+        redirect: state.redirect,
         token: state.token,
         balance: state.balance,
         user: state.user,

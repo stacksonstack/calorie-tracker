@@ -15,8 +15,8 @@ import {
 } from "reactstrap";
 
 export const CalcBMR = () => {
-  const { setBalance } = useContext(UserContext);
-  const [modalView, setModalView] = useState(true);
+  const { setBalance, redirect, userError } = useContext(UserContext);
+  const [modalView, setModalView] = useState(false);
   const [weight, setWeight] = useState(0);
   const [age, setAge] = useState(0);
   const [height, setHeight] = useState(0);
@@ -24,16 +24,18 @@ export const CalcBMR = () => {
   const [message, setMessage] = useState("");
   const [selectValue, setSelectValue] = useState(1.2);
   const [bmr, setBMR] = useState(0);
-  const { isAuth, skipBalance } = useContext(UserContext);
   const toggle = () => {
     setModalView(!modalView);
   };
 
-  //   useEffect(() => {
-  //     userError.id === "REGISTER_FAIL"
-  //       ? setMessage(userError.message)
-  //       : setMessage(null);
-  //   }, [userError]);
+  useEffect(() => {
+    if (redirect) {
+      setModalView(true);
+    }
+    userError.id === "REGISTER_FAIL"
+      ? setMessage(userError.message)
+      : setMessage(null);
+  }, [userError]);
 
   const onSubmit = () => {
     if (weight === 0 || age === 0 || height === 0) {
@@ -49,7 +51,9 @@ export const CalcBMR = () => {
   };
   return (
     <>
-      <NavLink onClick={toggle}>Calc your daily Cal Allowance</NavLink>
+      <Button color="secondary" onClick={toggle} className="updateBalance">
+        Update BMR{" "}
+      </Button>
       <Modal isOpen={modalView} toggle={setModalView} backdrop="static">
         <ModalHeader toggle={toggle}>BMR</ModalHeader>
         <ModalBody>
@@ -100,13 +104,7 @@ export const CalcBMR = () => {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button
-            color="warning"
-            onClick={() => {
-              toggle();
-              skipBalance();
-            }}
-          >
+          <Button color="warning" onClick={toggle}>
             Use Default
           </Button>
           <Button color="primary" onClick={onSubmit}>

@@ -1,12 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ItemContext } from "../context/Items/ItemContext";
 import { UserContext } from "../context/Users/UserContext";
-import { CalcBMR } from "../components/Modals/CalcBMR";
+import { CalcBMR } from "./Modals/CalcBMR.js";
 import { Button } from "reactstrap";
 export const Balance = () => {
   const { calorieEvents } = useContext(ItemContext);
-  const { user, balance } = useContext(UserContext);
-  const [bmr, setBMR] = useState(false);
+  const { user, balance, openBMR } = useContext(UserContext);
 
   const total = calorieEvents
     .map(({ type, amount }) =>
@@ -24,14 +23,7 @@ export const Balance = () => {
           Daily allowance: {balance} <br />
           Remaining calories: {balance - total}
         </div>
-        <Button
-          color="secondary"
-          onClick={() => setBMR(!bmr)}
-          className="updateBalance"
-        >
-          Update BMR
-        </Button>
-        {bmr && <CalcBMR />}
+        <CalcBMR />
       </div>
     </>
   );
