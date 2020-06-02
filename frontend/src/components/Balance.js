@@ -21,7 +21,7 @@ export const Balance = () => {
         {" "}
         <div className="balanceNum">
           Daily allowance: {balance} <br />
-          Remaining calories: {balance - total}
+          Remaining calories: {(balance - total).toFixed(2)}
         </div>
         <CalcBMR />
       </div>

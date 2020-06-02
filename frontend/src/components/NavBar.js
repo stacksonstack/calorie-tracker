@@ -18,7 +18,7 @@ export const NavBar = () => {
           <strong>{user && `Welcome ${user.name}`}</strong>
         </span>
         <NavItem>
-          <Link to="/account">Account</Link>
+          <Link to="/account">Link to update Account!</Link>
         </NavItem>
       </NavItem>
       <NavItem>
