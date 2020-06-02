@@ -15,7 +15,9 @@ import {
 } from "reactstrap";
 
 export const CalcBMR = () => {
-  const { setBalance, redirect, userError } = useContext(UserContext);
+  const { setBalance, redirect, userError, clearRedirect } = useContext(
+    UserContext
+  );
   const [modalView, setModalView] = useState(false);
   const [weight, setWeight] = useState(0);
   const [age, setAge] = useState(0);
@@ -30,11 +32,8 @@ export const CalcBMR = () => {
 
   useEffect(() => {
     if (redirect) {
-      setModalView(true);
+      toggle();
     }
-    userError.id === "REGISTER_FAIL"
-      ? setMessage(userError.message)
-      : setMessage(null);
   }, [userError]);
 
   const onSubmit = () => {
@@ -48,6 +47,7 @@ export const CalcBMR = () => {
         : 655 + 4.3 * weight + 4.7 * height - 4.7 * age;
 
     setBalance(final * selectValue);
+    toggle();
   };
   return (
     <>

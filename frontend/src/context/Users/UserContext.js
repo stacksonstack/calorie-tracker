@@ -86,6 +86,9 @@ export const UserProvider = ({ children }) => {
       });
     }
   }
+  async function clearRedirect() {
+    dispatch({ type: "CLEAR_REDIRECT", payload: {} });
+  }
   async function updateEmail(email) {
     try {
       const res = await axios.put(`/api/v1/users/email/${state.user._id}`, {
@@ -144,6 +147,7 @@ export const UserProvider = ({ children }) => {
         logout,
         login,
         setBalance,
+        clearRedirect,
         redirect: state.redirect,
         token: state.token,
         balance: state.balance,

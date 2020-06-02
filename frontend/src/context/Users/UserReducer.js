@@ -51,6 +51,11 @@ export default (state, action) => {
       isLoading: false,
       redirect: false,
     };
+  } else if (action.type === "CLEAR_REDIRECT") {
+    return {
+      ...state,
+      redirect: false,
+    };
   } else {
     return state;
   }

@@ -42,6 +42,7 @@ export const RegisterModal = () => {
   useEffect(() => {
     if (modalView && isAuth) {
       toggle();
+      clearErrors();
     }
   }, [isAuth, modalView]);
 
