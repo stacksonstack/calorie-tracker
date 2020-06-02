@@ -45,7 +45,7 @@ export const NavBar = () => {
         <div id="navTitle">
           <NavItem>
             {" "}
-            <NavLink href="#">calorie v1.0</NavLink>
+            <NavLink href="/">calorie v1.0</NavLink>
           </NavItem>
         </div>
         <NavItem>
