@@ -13,6 +13,7 @@ import {
 } from "reactstrap";
 import { UserContext } from "../context/Users/UserContext";
 import validator from "email-validator";
+import { NavBar } from "./NavBar";
 export const Account = () => {
   const [message, setMessage] = useState(false);
   const {
@@ -33,6 +34,8 @@ export const Account = () => {
 
   return (
     <div>
+      <NavBar />
+
       <h1>Account info</h1>
       <ListGroup>
         <ListGroupItem>{`User Name: ${user.name}`}</ListGroupItem>
