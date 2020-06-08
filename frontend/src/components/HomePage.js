@@ -25,7 +25,7 @@ export const HomePage = () => {
                   {" "}
                   Calorie Tracker{" "}
                   <Badge pill color="primary">
-                    <h4>v1.0</h4>
+                    v1.0
                   </Badge>{" "}
                 </h1>
               </Col>
@@ -51,26 +51,25 @@ export const HomePage = () => {
               </Col>
             </Row>
             <div id="homeBio">
-              <h1 className="display-4">counting calories? 🔍</h1>
+              <h2 className="display-4">counting calories? 🔍</h2>
 
               <h2>keeping tabs on what we eat isn't always easy..</h2>
               <h1>but deadPixels can help!</h1>
+              <hr className="my-2" />
+
+              <br></br>
+              <h2>Register below</h2>
             </div>
-            <p className="lead display-4" id="homeBtns">
-              <Button color="primary">
+            <div className="lead display-4" id="homeBtns">
+              <Button color="primary" size="lg">
                 {" "}
-                <Badge color="primary" pill>
-                  {" "}
-                  <RegisterModal />
-                </Badge>
+                <RegisterModal />
               </Button>
 
-              <Button>
-                <Badge color="#1485f5" pill>
-                  <Login />{" "}
-                </Badge>
+              <Button color="success" size="lg">
+                <Login />{" "}
               </Button>
-            </p>
+            </div>
           </Container>
           <br></br>
 
