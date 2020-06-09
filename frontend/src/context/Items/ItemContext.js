@@ -1,9 +1,10 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useContext } from "react";
 import ItemReducer from "./ItemReducer";
 import axios from "axios";
 import ErrorReducer from "../Errors/ErrorReducer";
 import { tokenConfig } from "../../utils/utils";
 import { errorState } from "../Errors/ErrorContext";
+import { UserContext } from "../Users/UserContext";
 const initialState = {
   token: localStorage.getItem("token"),
   calorieEvents: [],
@@ -15,6 +16,7 @@ const initialState = {
 export const ItemContext = createContext(initialState);
 
 export const ItemProvider = ({ children }) => {
+  const { user } = useContext(UserContext);
   const [state, dispatch] = useReducer(ItemReducer, initialState);
   const [errState, errDispatch] = useReducer(ErrorReducer, errorState);
 
@@ -36,7 +38,7 @@ export const ItemProvider = ({ children }) => {
       const response = await axios.get("api/v1/calories");
       dispatch({
         type: "GET_CALORIEEVENTS",
-        payload: response.data.results,
+        payload: { items: response.data.results, user: user._id },
       });
     } catch (error) {
       returnErrors(error.response.data.error, error.response.data.status);

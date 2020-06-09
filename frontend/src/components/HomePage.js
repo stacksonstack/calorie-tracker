@@ -51,7 +51,7 @@ export const HomePage = () => {
               </Col>
             </Row>
             <div id="homeBio">
-              <h2 className="display-4">counting calories? 🔍</h2>
+              <h2>counting calories? 🔍</h2>
 
               <h2>keeping tabs on what we eat isn't always easy..</h2>
               <h1>but deadPixels can help!</h1>

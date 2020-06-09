@@ -19,12 +19,13 @@ exports.getCalorieEvents = async (req, res, next) => {
 
 exports.addCalorieEvent = async (req, res, next) => {
   try {
-    const { text, type, amount } = await req.body;
+    const { text, type, amount, createdBy } = await req.body;
 
     const newResponse = new CalorieEvent({
       text,
       type,
       amount,
+      createdBy,
     });
 
     await newResponse.save();

@@ -15,7 +15,9 @@ export default (state, action) => {
     return {
       ...state,
       loading: false,
-      calorieEvents: action.payload,
+      calorieEvents: action.payload.items.filter(
+        ({ createdBy }) => createdBy === action.payload.user
+      ),
     };
   }
 };
