@@ -15,11 +15,13 @@ export const NavBar = () => {
     <>
       <NavItem>
         <span className="navbar-text mr-2">
-          <strong>{user && `Welcome ${user.name}`}</strong>
+          <Link to="/account">
+            {" "}
+            <strong>
+              {user && `Welcome ${user.name}, click here to update account`}
+            </strong>{" "}
+          </Link>
         </span>
-        <NavItem>
-          <Link to="/account">Link to update Account!</Link>
-        </NavItem>
       </NavItem>
       <NavItem>
         <Logout />
@@ -48,9 +50,6 @@ export const NavBar = () => {
             <NavLink href="/">calorie v1.0</NavLink>
           </NavItem>
         </div>
-        <NavItem>
-          <Spinner color="primary" />
-        </NavItem>
         {isAuth ? authLinks : guestLinks}
       </Nav>
     </div>
