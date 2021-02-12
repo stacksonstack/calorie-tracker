@@ -10,6 +10,8 @@ This application was built by Anthony Jimenez and I for our Web Development II f
 - CSS + Styled Components 
 - Bootstrap 
 - MongoDB
+- Node.js
+- Express
 
 ## Getting Started
 - Fork this repo 
