@@ -15,6 +15,9 @@ const CalorieEventSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please add amount"],
   },
+  createdBy: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

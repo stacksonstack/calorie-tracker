@@ -7,7 +7,8 @@
     "start": "node server",
     "server": "nodemon server",
     "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
@@ -19,11 +20,15 @@
     "url": "https://github.com/securethebags/calorie-tracker/issues"
   },
   "homepage": "https://github.com/securethebags/calorie-tracker#readme",
+  "engines": {
+    "node": "13.7.x"
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.0",
     "dotenv": "^8.2.0",
+    "email-validator": "^2.0.4",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.14",

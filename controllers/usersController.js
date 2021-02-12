@@ -2,6 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
+var validator = require("email-validator");
 
 dotenv.config({ path: "./config/config.env" });
 
@@ -19,8 +20,33 @@ exports.updateBalance = async (req, res) => {
       user: newOne,
     });
   } catch (err) {
-    res.json({
+    res.status(500).json({
       error: err,
+    });
+  }
+};
+
+exports.updateEmail = async (req, res) => {
+  try {
+    var email = { email: req.body.email };
+    var filter = { _id: req.params.id };
+    console.log(filter);
+    const user = await User.findOne(email);
+
+    if (user) throw Error("Email already in use");
+    if (!validator.validate(email.email)) {
+      throw Error("Email is invalid");
+    }
+    var newOne = await User.findOneAndUpdate(filter, email, {
+      new: true,
+    });
+    res.status(200).json({
+      message: "Email updated successfully",
+      user: newOne,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err.message,
     });
   }
 };
@@ -32,7 +58,8 @@ exports.registerNewUser = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (user) throw Error("Email already in use");
-
+    if (!validator.validate(email))
+      throw Error("Invalid email format, try again.");
     const newUser = new User({
       name,
       email,

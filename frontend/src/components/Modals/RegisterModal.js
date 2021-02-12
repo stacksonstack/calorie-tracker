@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/Users/UserContext";
+import SetBMR from "../SetBMR";
 import {
   NavLink,
   Button,
@@ -12,10 +13,15 @@ import {
   Alert,
 } from "reactstrap";
 
-export const RegisterModal = ({ setRedirect, redirect }) => {
-  const { isAuth, userError, registerUser, clearErrors } = useContext(
-    UserContext
-  );
+export const RegisterModal = () => {
+  const {
+    isAuth,
+    userError,
+    registerUser,
+    clearErrors,
+    redirect,
+    loadUser,
+  } = useContext(UserContext);
   const [modalView, setModalView] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -34,14 +40,14 @@ export const RegisterModal = ({ setRedirect, redirect }) => {
   }, [userError]);
 
   useEffect(() => {
-    if (modalView && redirect) {
+    if (modalView && isAuth) {
       toggle();
+      clearErrors();
     }
   }, [isAuth, modalView]);
 
   const onSubmit = () => {
     registerUser(name, email, password);
-    setRedirect(true);
   };
   return (
     <div>

@@ -1,18 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { ItemContext } from "../context/Items/ItemContext";
-import {
-  NavLink,
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Input,
-  Label,
-  Alert,
-  Select,
-  Form,
-} from "reactstrap";
+import { UserContext } from "../context/Users/UserContext";
+
+import { Button, Input, Form } from "reactstrap";
 
 export const AddCalorieEvent = () => {
   const [text, setText] = useState("");
@@ -20,6 +10,7 @@ export const AddCalorieEvent = () => {
   const [type, setType] = useState("food");
   const [message, setMessage] = useState(null);
   const { addCalorieEvent, itemError } = useContext(ItemContext);
+  const { user } = useContext(UserContext);
 
   console.log(itemError);
   useEffect(() => {
@@ -35,6 +26,7 @@ export const AddCalorieEvent = () => {
       text,
       type,
       amount: +amount,
+      createdBy: user._id,
     };
 
     addCalorieEvent(newTransaction);

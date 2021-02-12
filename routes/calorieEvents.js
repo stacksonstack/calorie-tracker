@@ -7,8 +7,8 @@ const {
 } = require("../controllers/calorieController");
 const { auth } = require("../middleware/auth");
 
-router.route("/").get(getCalorieEvents).post(auth, addCalorieEvent);
+router.route("/").get(getCalorieEvents).post(addCalorieEvent);
 
-router.route("/:id").delete(auth, deleteCalorieEvent);
+router.route("/:id").delete(deleteCalorieEvent);
 
 module.exports = router;

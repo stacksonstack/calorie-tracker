@@ -19,7 +19,7 @@ export const CalorieEvent = ({ calorieEvent }) => {
         className="delete-btn"
         onClick={() => deleteCalorieEvent(calorieEvent._id)}
       >
-        
+        X
       </button>
     </li>
   );

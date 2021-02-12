@@ -1,11 +1,19 @@
-import React, { useContext} from "react";
-import { Jumbotron, Container, Badge, Button, Col, Row } from "reactstrap";
+import React, { useContext } from "react";
+import {
+  Jumbotron,
+  Container,
+  Badge,
+  Button,
+  Col,
+  Row,
+  NavLink,
+} from "reactstrap";
 import { RegisterModal } from "./Modals/RegisterModal";
 import { Login } from "./Modals/Login";
 import { CalcBMR } from "./Modals/CalcBMR";
 import { UserContext } from "../context/Users/UserContext";
 export const HomePage = () => {
-  const { redirect, setRedirect }= useContext(UserContext);
+  const { redirect } = useContext(UserContext);
   return (
     <>
       <div className="homepage">
@@ -17,7 +25,7 @@ export const HomePage = () => {
                   {" "}
                   Calorie Tracker{" "}
                   <Badge pill color="primary">
-                    <h4>v1.0</h4>
+                    v1.0
                   </Badge>{" "}
                 </h1>
               </Col>
@@ -43,31 +51,25 @@ export const HomePage = () => {
               </Col>
             </Row>
             <div id="homeBio">
-              <h1 className="display-4">counting calories? 🔍</h1>
+              <h2>counting calories? 🔍</h2>
 
               <h2>keeping tabs on what we eat isn't always easy..</h2>
               <h1>but deadPixels can help!</h1>
+              <hr className="my-2" />
+
+              <br></br>
+              <h2>Register below</h2>
             </div>
-            <p className="lead display-4" id="homeBtns">
-              {!redirect ? (
-                <Button color="primary">
-                  {" "}
-                  <Badge color="primary" pill>
-                    {" "}
-                    <RegisterModal
-                   
-                    />
-                  </Badge>
-                </Button>
-              ) : (
-                <CalcBMR />
-              )}
-              <Button>
-                <Badge color="#1485f5" pill>
-                  <Login />{" "}
-                </Badge>
+            <div className="lead display-4" id="homeBtns">
+              <Button color="primary" size="lg">
+                {" "}
+                <RegisterModal />
               </Button>
-            </p>
+
+              <Button color="success" size="lg">
+                <Login />{" "}
+              </Button>
+            </div>
           </Container>
           <br></br>
 
@@ -88,10 +90,16 @@ export const HomePage = () => {
             <h4>
               <div>
                 {" "}
-                Anthony Jimenez and Stacey Carrillo <hr></hr>
-                Repo Link
+                <a href="https://gatsby-anthonyjimenez.netlify.app/">
+                  Anthony Jimenez{" "}
+                </a>{" "}
+                and
+                <a href="https://github.com/stacksonstack"> Stacey Carrillo </a>
+                <hr></hr>
+                <a href="https://github.com/securethebags/calorie-tracker">
+                  Repo Link{" "}
+                </a>
                 <hr className="my-2" />
-                Github Links
               </div>
             </h4>
           </Container>

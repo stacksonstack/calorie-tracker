@@ -8,7 +8,7 @@ exports.auth = (req, res, next) => {
 
   if (!token) {
     return res.status(401).json({
-      error: "No token, auth rejected",
+      error: "No token, rejected (Try reloading!)",
     });
   }
   try {

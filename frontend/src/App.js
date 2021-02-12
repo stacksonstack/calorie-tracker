@@ -10,11 +10,10 @@ import { NavBar } from "./components/NavBar";
 import ModalRoute from "./components/Routes/ModalRoute";
 import { HomePage } from "./components/HomePage";
 import PrivateRoute from "./components/Routes/PrivateRoute";
-import { Nav } from "reactstrap";
-import { CalcBMR } from "./components/Modals/CalcBMR";
+import { Account } from "./components/Account";
 
 function App() {
-  const { loadUser, token, user } = useContext(UserContext);
+  const { loadUser, user } = useContext(UserContext);
   useEffect(() => {
     loadUser();
     //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,7 +33,9 @@ function App() {
               <AddCalorieEvent />
             </div>
           </PrivateRoute>
-
+          <PrivateRoute path="/account">
+            <Account />
+          </PrivateRoute>
           <div>
             <ModalRoute path="/">
               <HomePage />
