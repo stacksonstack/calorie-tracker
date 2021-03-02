@@ -7,7 +7,7 @@ This application was built by Anthony Jimenez and I for our Web Development II f
 - Babel 
 - Webpack
 - HTML
-- CSS + Styled Components 
+- CSS
 - Bootstrap 
 - MongoDB
 - Node.js
